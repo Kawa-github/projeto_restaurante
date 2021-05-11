@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Reserva</title>
+        <style>
+            
+    body{
+    background-image: url(imgs/6-63195_food-wallpaper-foods-wallpaper-hd.jpg); 
+    }
+    
+     #subHead{
+    border: 1px solid #000;
+    margin-top: 1em;
+    width: 13%;
+    margin-left: 36em;
+    background-color: burlywood;
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+     } 
+        
+     h4{
+    margin: 0 auto;
+    }       
+    
+    a:hover{
+    background-color: snow;
+    text-decoration: underline;    
+    }
+            
+    main {
+    width:95%;
+    border:.0625em solid #000;    
+    margin: 0 auto;
+    background: #DCDCDC;    
+    }
+            
+    h1{
+    border: 1px solid #000;
+    background: #A9A9A9;
+    padding-left: 25px;
+    font-family: Georgia, serif;
+    font-size: 21pt;
+    }
+        
+    form{
+    font-family: "trebuchet ms";
+    font-size: 12pt;
+    }
+        
+    fieldset{
+    margin: .3em auto;
+    width: 70%;
+    border: 1px solid #000;
+    }
+        
+    legend{
+    font-size: 14pt;
+    padding: 0 1em;
+    font-weight: 900;
+    }
+        
+    label{
+    color: #000;
+    }
+    
+    input{
+    margin-right: 13px;
+    margin-bottom: 15px;
+    }
+    
+    #dateDis{
+    font-size: 15pt;
+    color: #000;
+    }
+        
+    p{
+    display: inline;
+    }
+        
+    .dateField{
+    width: 30%;
+    }
+        
+    .dateField label{
+    margin-left: 8em;
+    }
+        
+    .dateField input{
+    margin-top: 1em;
+    margin-left: 4em;
+    }
+    
+    #envDados{
+    background-color: #FFDEAD;
+    color: #000;
+    border: .0625em solid #000;     
+    font-family: cursive;
+    margin-top: 10px;
+    margin-left: 12em;
+    margin-bottom: 14px;         
+    border-radius: 4px;
+    font-size: 11pt;   
+    } 
+    
+    @media only screen and (max-device-width: 700px){
+    body{
+    background: gray;
+    }
+                
+    #subHead{
+    margin-left: 27em;    
+    }
+                
+    form{
+    font-size: 15pt;
+    }        
+                
+    label{
+    font-size: 15pt;
+    }
+                
+    input{
+    font-size: 15pt;
+    }
+                
+    p{
+    display: inline;
+    }
+                
+    .dateField label{
+    margin-right: 8em;
+    }
+                
+    .dateField input{
+    margin-left: 7em;    
+    }
+                
+    #envDados{
+    font-size: 14pt;
+    margin-left: 4.5em;
+    }
+    }         
+    
+    </style>    
+</head>
+<body>
+    <header>
+        <section id="subHead">
+            <h4><a href="index.html">RESTAURANTE KINGS</a></h4>
+        </section>
+    </header>    
+<main>
+    <h1>Faça sua reserva</h1>
+    <form name="frRes" id="frRes" method="post" action="freserva.html">
+        <fieldset>
+            <legend>Preencha seus dados</legend>
+            <p>
+                <label for="nameUser">Nome:</label>
+                    <input type="text" name="nameUser" id="nameUser" size="15" maxlength="10" placeholder="confirme seu nome">
+            </p>
+            <p>
+                <label for="sobreUser">Sobrenome:</label>
+                    <input type="text" name="sobreUser" id="sobreUser" size="15" maxlength="15" placeholder="insira seu sobrenome">
+            </p>
+            <p>
+                <label for="emailUser">Email:</label>
+                    <input type="email" name="emailUser" id="emailUser" size="30" maxlength="25" placeholder="insira seu email">
+            </p>
+            <p>
+                <br>
+                <label for="celUser">Celular:</label>       
+                    <input type="tel" name="celUser" id="celUser" size="19" maxlength="12" placeholder="9999-9999 ou 99999-9999">
+            </p>
+            <label for="hospedes">Hóspedes:</label>     
+                <input type="number" name="hospedes" id="hospedes" size="50">
+         
+            <legend>comentários</legend>
+                <textarea name="txComents" id="txComents" cols="40" rows="2" placeholder="digite aqui seus comentários..."></textarea>
+        </fieldset>    
+        <fieldset class="dateField">
+            <label for="dateDis">Disponibilidade:</label>
+                <input type="date" name="dateDis" id="dateDis">
+            </fieldset>
+         <p>
+            <button onclick="capturaDados()" name="envDados" id="envDados">Enviar dados</button>
+        </p>
+    </form>
+        <p id="confirmado"></p>
+    <script>
+        function capturaDados() {  
+        var stConfirma = "<h2>Confirmação:</h2><p>dados recebidos com sucesso!</p>";
+        var stNomeUser = document.getElementById("nameUser").value;
+        var stEmailUser = document.getElementById("emailUser").value;
+        var stSobreUser = document.getElementById("sobreUser").value; 
+        var stContatoUser = document.getElementById("celUser").value;
+            
+        if(stNomeUser == ""){
+        alert("você deve digitar seu nome para realizar a reserva!");
+        document.getElementById("nameUser").focus();
+        return false;
+        }
+       
+        if(stEmailUser == ""){
+        alert("você deve digitar um email para completar a reserva!");
+        document.getElementById("emailUser").focus();
+        return false;
+        }
+        
+        if(stContatoUser == ""){
+        alert("você deve digitar seu número para contato!");
+        document.getElementById("celUser").focus();
+        return false;
+        }
+            
+        else {
+        document.write(stConfirma + "obrigado, " + stNomeUser + stSobreUser + "<br/>aguarde a confirmação no seu email" + "<br/>email: ********.com " + "<br/>contato:" + stContatoUser + "<p>");
+        document.write("<a href='index.html'>voltar ao site</a></p>");
+        document.write("<a href='freserva.html'>voltar ao formulário</a></p>");
+        }
+        } 
+    </script> 
+</main>    
+</body>
+</html>
